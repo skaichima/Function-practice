@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // FUNCTION NO. 1
+        const getMin = (arr) => (arr.sort((a, b) => b - a)[arr.length - 1]);
+
+        // FUNCTION NO. 2
+        const getMax = (arr) => (arr.sort((a, b) => a - b)[arr.length - 1]);
+
+        // FUNCTION NO. 3
+        const sortArr = (arr) => {
+            const positives = [];
+            const negatives = [];
+            const posMinMax = {};
+            const negMinMax = {};
+            const sortedArr = [positives, negatives, posMinMax, negMinMax];
+            arr.forEach(number => number > 0 ? positives.push(number) : negatives.push(number));
+            posMinMax['minima'] = getMin(positives);
+            posMinMax['maxima'] = getMax(positives);
+            negMinMax['minima'] = getMin(negatives);
+            negMinMax['maxima'] = getMax(negatives);
+            console.log(sortedArr);
+        }
+
+        // FUNCTION NO. 4
+        const merger = (arr1, arr2) => {
+            const mergedArr = [];
+            arr1.map(num => mergedArr.push(num));
+            arr2.map(num => mergedArr.push(num));
+            console.log(mergedArr);
+        }
+
+        // FUNCTION NO. 5
+        const dupChecker = (arr) => {
+            const checkedArr = [];
+            arr.forEach(item => {
+                if (!(checkedArr.includes(item))) {
+                    checkedArr.push(item)
+                }
+            })
+            console.log(checkedArr);
+        }
+
+        console.log(getMax([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+        console.log(getMin([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+        getMin([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+        sortArr([1, -2, 3, -4, 5, 6, -7, 8, -9, 0])
+        merger([1, -2, 3, -4], [5, 6, -7, 8, -9, 0])
+        dupChecker([1, -2, 3, 3, 3, 6, 6, 6, -7, 6, -7, 8, -9, 0])
+    </script>
+</body>
+
+</html>
